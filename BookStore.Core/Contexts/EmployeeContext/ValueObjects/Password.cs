@@ -17,6 +17,8 @@ public class Password : ValueObject
         Hash = Hashing(password);
     }
 
+    public bool VerifyHash(string plainTextPassword) => Verify(Hash, plainTextPassword);
+
     public string Hash { get; } = string.Empty;
     public string ResetCode { get; } = string.Empty;
 
@@ -49,7 +51,7 @@ public class Password : ValueObject
         return $"{iterations}{splitChar}{salt}{splitChar}{key}";
     }
 
-    public static bool Verify(string hash, string password, short keySize = 32, int iterations = 10000, char splitChar = '.')
+    private static bool Verify(string hash, string password, short keySize = 32, int iterations = 10000, char splitChar = '.')
     {
         password += Configuration.Secrets.PasswordSaltKey;
 
