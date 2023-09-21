@@ -4,5 +4,5 @@ namespace BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate.Contract
 
 public interface IRepository
 {
-    Task<Employee> GetEmployeeByEmailAsync(string email, CancellationToken cancellationToken);
+    Task<Employee?> GetEmployeeByEmailAsync(string email, CancellationToken cancellationToken);
 }

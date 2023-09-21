@@ -4,6 +4,6 @@ namespace BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployee
 
 public interface IRepository
 {
-    Task<Employee> GetEmployeeAsync(string email, CancellationToken cancellationToken);
+    Task<Employee?> GetEmployeeAsync(string email, CancellationToken cancellationToken);
     Task SaveAsync(Employee employee, CancellationToken cancellationToken);
 }
