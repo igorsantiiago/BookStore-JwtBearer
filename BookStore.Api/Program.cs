@@ -1,6 +1,21 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using BookStore.Api.Extensions;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+builder.AddConfiguration();
+builder.AddDatabase();
+builder.AddJwtAuthentication();
+
+builder.AddEmployeeContext();
+
+builder.AddMediatr();
+
+var app = builder.Build();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapEmployeeEndpoints();
 
 app.Run();
