@@ -32,7 +32,7 @@ public class Handler : IRequestHandler<Request, Response>
 
         #region Get Employee
 
-        Employee employee;
+        Employee? employee;
 
         try
         {

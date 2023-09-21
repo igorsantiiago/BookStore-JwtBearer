@@ -24,7 +24,7 @@ public class EmployeeMap : IEntityTypeConfiguration<Employee>
         builder.HasMany(employee => employee.Roles).WithMany(roles => roles.Employees).UsingEntity<Dictionary<string, object>>(
             "EmployeeRole",
             role => role.HasOne<Role>().WithMany().HasForeignKey("RoleId").OnDelete(DeleteBehavior.Cascade),
-            employee => employee.HasOne<Employee>().WithMany("EmployeeId").OnDelete(DeleteBehavior.Cascade)
+            employee => employee.HasOne<Employee>().WithMany().HasForeignKey("EmployeeId").OnDelete(DeleteBehavior.Cascade)
             );
     }
 }

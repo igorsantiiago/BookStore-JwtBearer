@@ -28,7 +28,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Employee
-        Employee employee;
+        Employee? employee;
         try
         {
             employee = await _repository.GetEmployeeAsync(request.Email, cancellationToken);

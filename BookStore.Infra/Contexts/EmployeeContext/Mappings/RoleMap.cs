@@ -8,8 +8,8 @@ public class RoleMap : IEntityTypeConfiguration<Role>
 {
     public void Configure(EntityTypeBuilder<Role> builder)
     {
-        builder.ToTable("Roles");
-        builder.HasKey("Id");
+        builder.ToTable("Role");
+        builder.HasKey(role => role.Id);
 
         builder.Property(role => role.Name).HasColumnName("Name").HasColumnType("NVARCHAR").HasMaxLength(50).IsRequired(true);
     }
