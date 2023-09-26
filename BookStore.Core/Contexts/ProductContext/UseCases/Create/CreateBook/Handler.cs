@@ -53,21 +53,21 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Add Author, Publisher and Genre
-        Author author;
-        Publisher publisher;
-        Genre genre;
+        Author? author;
+        Publisher? publisher;
+        Genre? genre;
 
         try
         {
-            author = await _repository.GetAuthor(request.Author.Id);
+            author = await _repository.GetAuthor(request.Author.Id, cancellationToken);
             if (author == null)
                 return new Response("Author not found", 404);
 
-            publisher = await _repository.GetPublisher(request.Publisher.Id);
+            publisher = await _repository.GetPublisher(request.Publisher.Id, cancellationToken);
             if (publisher == null)
                 return new Response("Publisher not found", 404);
 
-            genre = await _repository.GetGenre(request.Genre.Id);
+            genre = await _repository.GetGenre(request.Genre.Id, cancellationToken);
             if (genre == null)
                 return new Response("Genre not found", 404);
 

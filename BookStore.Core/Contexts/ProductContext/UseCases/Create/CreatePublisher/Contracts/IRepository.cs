@@ -4,6 +4,6 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher
 
 public interface IRepository
 {
-    Task<bool> AnyAsync(string name);
+    Task<bool> AnyAsync(string name, CancellationToken cancellationToken);
     Task SaveAsync(Publisher publisher, CancellationToken cancellationToken);
 }

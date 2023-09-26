@@ -45,7 +45,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Verify Author
         try
         {
-            var exists = await _repository.AnyAsync(request.FirstName, request.LastName);
+            var exists = await _repository.AnyAsync(request.FirstName, request.LastName, cancellationToken);
             if(exists)
                 return new Response("Author already exists", 400);
         }

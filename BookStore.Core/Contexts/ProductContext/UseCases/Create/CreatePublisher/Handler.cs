@@ -43,7 +43,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Verify Publisher Existence
         try
         {
-            var exists = await _repository.AnyAsync(request.Name);
+            var exists = await _repository.AnyAsync(request.Name, cancellationToken);
             if (exists)
                 return new Response("Publisher already exists", 400);
         }
