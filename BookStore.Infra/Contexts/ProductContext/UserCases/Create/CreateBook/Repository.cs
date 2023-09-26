@@ -1,0 +1,35 @@
+﻿using BookStore.Core.Contexts.ProductContext.Entities;
+using BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateBook.Contracts;
+using BookStore.Core.Contexts.SharedContext.ValueObjects;
+using BookStore.Infra.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace BookStore.Infra.Contexts.ProductContext.UserCases.Create.CreateBook;
+
+public class Repository : IRepository
+{
+    private readonly AppDbContext _context;
+    public Repository(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<bool> AnyAsync(string title, Author author, CancellationToken cancellationToken)
+        => await _context.Books.AsNoTracking()
+        .AnyAsync(book => book.Title == title && book.Author.Equals(author), cancellationToken);
+
+    public async Task<Author?> GetAuthor(Guid id, CancellationToken cancellationToken)
+        => await _context.Authors.FirstOrDefaultAsync(author => author.Id == id, cancellationToken);
+
+    public async Task<Genre?> GetGenre(Guid id, CancellationToken cancellationToken)
+        => await _context.Genres.FirstOrDefaultAsync(genre => genre.Id == id, cancellationToken);
+
+    public async Task<Publisher?> GetPublisher(Guid id, CancellationToken cancellationToken)
+        => await _context.Publishers.FirstOrDefaultAsync(publisher => publisher.Id == id, cancellationToken);
+
+    public async Task SaveAsync(Book book, CancellationToken cancellationToken)
+    {
+        await _context.Books.AddAsync(book, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+}
