@@ -8,7 +8,7 @@ public class AuthorMap : IEntityTypeConfiguration<Author>
 {
     public void Configure(EntityTypeBuilder<Author> builder)
     {
-        builder.ToTable("Authors");
+        builder.ToTable("Author");
         builder.HasKey(author => author.Id);
 
         builder.OwnsOne(author => author.Name)

@@ -3,7 +3,7 @@ using BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateAuthor.Contra
 using BookStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.Infra.Contexts.ProductContext.UserCases.Create.CreateAuthor;
+namespace BookStore.Infra.Contexts.ProductContext.UseCases.Create.CreateAuthor;
 
 public class Repository : IRepository
 {

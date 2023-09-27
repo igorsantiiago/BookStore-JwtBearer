@@ -5,12 +5,12 @@ namespace BookStore.Core.Contexts.ProductContext.Entities;
 public class Genre : Entity
 {
     protected Genre() { }
-    public Genre(string genreName)
+    public Genre(string name)
     {
-        GenreName = genreName;
+        Name = name;
     }
-    public string GenreName { get; private set; } = string.Empty;
+    public string Name { get; private set; } = string.Empty;
     public List<Book> Books { get; set; } = new();
 
-    public void ChangeName(string genreName) => GenreName = genreName;
+    public void ChangeName(string name) => Name = name;
 }

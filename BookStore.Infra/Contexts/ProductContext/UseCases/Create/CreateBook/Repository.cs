@@ -4,7 +4,7 @@ using BookStore.Core.Contexts.SharedContext.ValueObjects;
 using BookStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.Infra.Contexts.ProductContext.UserCases.Create.CreateBook;
+namespace BookStore.Infra.Contexts.ProductContext.UseCases.Create.CreateBook;
 
 public class Repository : IRepository
 {
@@ -16,7 +16,7 @@ public class Repository : IRepository
 
     public async Task<bool> AnyAsync(string title, Author author, CancellationToken cancellationToken)
         => await _context.Books.AsNoTracking()
-        .AnyAsync(book => book.Title == title && book.Author.Equals(author), cancellationToken);
+        .AnyAsync(book => book.Title == title && book.Authors.Equals(author), cancellationToken);
 
     public async Task<Author?> GetAuthor(Guid id, CancellationToken cancellationToken)
         => await _context.Authors.FirstOrDefaultAsync(author => author.Id == id, cancellationToken);

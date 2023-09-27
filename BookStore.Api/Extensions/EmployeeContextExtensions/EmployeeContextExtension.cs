@@ -1,7 +1,7 @@
 ﻿using BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate;
 using MediatR;
 
-namespace BookStore.Api.Extensions;
+namespace BookStore.Api.Extensions.EmployeeContextExtensions;
 
 public static class EmployeeContextExtension
 {
@@ -9,36 +9,36 @@ public static class EmployeeContextExtension
     {
         #region Authenticate
         builder.Services.AddTransient<
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate.Contracts.IRepository,
-            BookStore.Infra.Contexts.EmployeeContext.UseCases.Authenticate.Repository
+            Core.Contexts.EmployeeContext.UseCases.Authenticate.Contracts.IRepository,
+            Infra.Contexts.EmployeeContext.UseCases.Authenticate.Repository
             >();
         #endregion
 
         #region Create
         builder.Services.AddTransient<
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Create.Contracts.IRepository,
-            BookStore.Infra.Contexts.EmployeeContext.UseCases.Create.Repository
+            Core.Contexts.EmployeeContext.UseCases.Create.Contracts.IRepository,
+            Infra.Contexts.EmployeeContext.UseCases.Create.Repository
             >();
         #endregion
 
         #region UpdateEmployeeData
         builder.Services.AddTransient<
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Contracts.IRepository,
-            BookStore.Infra.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Repository
+            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Contracts.IRepository,
+            Infra.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Repository
             >();
         #endregion
 
         #region UpdateEmployeePassword
         builder.Services.AddTransient<
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Contracts.IRepository,
-            BookStore.Infra.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Repository
+            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Contracts.IRepository,
+            Infra.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Repository
             >();
         #endregion
 
         #region Delete
         builder.Services.AddTransient<
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Delete.Contracts.IRepository,
-            BookStore.Infra.Contexts.EmployeeContext.UseCases.Delete.Repository
+            Core.Contexts.EmployeeContext.UseCases.Delete.Contracts.IRepository,
+            Infra.Contexts.EmployeeContext.UseCases.Delete.Repository
             >();
         #endregion
 
@@ -48,10 +48,10 @@ public static class EmployeeContextExtension
     {
         #region Authenticate
         app.MapPost("api/v1/authenticate", async (
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate.Request request,
+            Request request,
             IRequestHandler<
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate.Request,
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate.Response> handler) =>
+                Request,
+                Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
 
@@ -68,10 +68,10 @@ public static class EmployeeContextExtension
 
         #region Create
         app.MapPost("api/v1/employee/create", async (
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Create.Request request,
+            Core.Contexts.EmployeeContext.UseCases.Create.Request request,
             IRequestHandler<
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Create.Request,
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Create.Response> handler) =>
+                Core.Contexts.EmployeeContext.UseCases.Create.Request,
+                Core.Contexts.EmployeeContext.UseCases.Create.Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
             return result.IsSuccess
@@ -82,10 +82,10 @@ public static class EmployeeContextExtension
 
         #region UpdateEmployeeData
         app.MapPut("api/v1/employee/update/data", async (
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request request,
+            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request request,
             IRequestHandler<
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request,
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Response> handler) =>
+                Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request,
+                Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
             return result.IsSuccess
@@ -96,10 +96,10 @@ public static class EmployeeContextExtension
 
         #region UpdateEmployeePassword
         app.MapPut("api/v1/employee/update/password", async (
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request request,
+            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request request,
             IRequestHandler<
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request,
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Response> handler) =>
+                Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request,
+                Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
             return result.IsSuccess
@@ -110,10 +110,10 @@ public static class EmployeeContextExtension
 
         #region Delete
         app.MapDelete("api/v1/employee/delete", async (
-            BookStore.Core.Contexts.EmployeeContext.UseCases.Delete.Request request,
+            Core.Contexts.EmployeeContext.UseCases.Delete.Request request,
             IRequestHandler<
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Delete.Request,
-                BookStore.Core.Contexts.EmployeeContext.UseCases.Delete.Response> handler) =>
+                Core.Contexts.EmployeeContext.UseCases.Delete.Request,
+                Core.Contexts.EmployeeContext.UseCases.Delete.Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
             return result.IsSuccess

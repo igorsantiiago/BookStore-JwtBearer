@@ -7,6 +7,6 @@ public static class Specification
 {
     public static Contract<Notification> Validate(Request request) => new Contract<Notification>()
         .Requires()
-        .IsLowerOrEqualsThan(request.genreName.Length, 40, "GenreName", "The genre name need to have maximum 40 characters")
-        .IsGreaterOrEqualsThan(request.genreName.Length, 3, "GenreName", "The genre name need to have minumum 3 characters");
+        .IsLowerOrEqualsThan(request.Name.Length, 40, "Name", "The genre name need to have maximum 40 characters")
+        .IsGreaterOrEqualsThan(request.Name.Length, 3, "Name", "The genre name need to have minumum 3 characters");
 }

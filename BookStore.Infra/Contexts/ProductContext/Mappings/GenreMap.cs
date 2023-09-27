@@ -8,9 +8,9 @@ public class GenreMap : IEntityTypeConfiguration<Genre>
 {
     public void Configure(EntityTypeBuilder<Genre> builder)
     {
-        builder.ToTable("Books");
+        builder.ToTable("Genre");
         builder.HasKey(genre => genre.Id);
 
-        builder.Property(genre => genre.GenreName).HasColumnName("Name").HasColumnType("NVARCHAR").HasMaxLength(40).IsRequired(true);
+        builder.Property(genre => genre.Name).HasColumnName("Name").HasColumnType("NVARCHAR").HasMaxLength(40).IsRequired(true);
     }
 }

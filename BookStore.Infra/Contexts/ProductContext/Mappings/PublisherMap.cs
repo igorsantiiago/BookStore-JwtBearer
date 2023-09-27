@@ -8,7 +8,7 @@ public class PublisherMap : IEntityTypeConfiguration<Publisher>
 {
     public void Configure(EntityTypeBuilder<Publisher> builder)
     {
-        builder.ToTable("Publishers");
+        builder.ToTable("Publisher");
         builder.HasKey(publisher => publisher.Id);
 
         builder.Property(publisher => publisher.Name).HasColumnName("Name").HasColumnType("NVARCHAR").HasMaxLength(80).IsRequired(true);

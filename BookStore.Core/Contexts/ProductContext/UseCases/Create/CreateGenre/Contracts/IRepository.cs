@@ -4,6 +4,6 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateGenre.Con
 
 public interface IRepository
 {
-    Task<bool> AnyAsync(string genreName, CancellationToken cancellationToken);
+    Task<bool> AnyAsync(string name, CancellationToken cancellationToken);
     Task SaveAsync(Genre genre, CancellationToken cancellationToken);
 }

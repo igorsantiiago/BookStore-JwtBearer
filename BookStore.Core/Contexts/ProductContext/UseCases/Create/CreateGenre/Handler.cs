@@ -31,7 +31,7 @@ public class Handler : IRequestHandler<Request, Response>
 
         try
         {
-            genre = new(request.genreName);
+            genre = new(request.Name);
         }
         catch(Exception ex)
         {
@@ -42,7 +42,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Verify Existence
         try
         {
-            var exists = await _repository.AnyAsync(request.genreName, cancellationToken);
+            var exists = await _repository.AnyAsync(request.Name, cancellationToken);
             if (exists)
                 return new Response("Genre already exists", 400);
         }
@@ -64,7 +64,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Response
-        return new Response("Genre created successfully", new ResponseData(genre.Id, genre.GenreName));
+        return new Response("Genre created successfully", new ResponseData(genre.Id, genre.Name));
         #endregion
     }
 }

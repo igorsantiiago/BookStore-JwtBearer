@@ -3,7 +3,7 @@ using BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateGenre.Contrac
 using BookStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.Infra.Contexts.ProductContext.UserCases.Create.CreateGenre;
+namespace BookStore.Infra.Contexts.ProductContext.UseCases.Create.CreateGenre;
 
 public class Repository : IRepository
 {
@@ -12,8 +12,8 @@ public class Repository : IRepository
     {
         _context = context;
     }
-    public async Task<bool> AnyAsync(string genreName, CancellationToken cancellationToken)
-        => await _context.Genres.AsNoTracking().AnyAsync(genre => genre.GenreName == genreName, cancellationToken: cancellationToken);
+    public async Task<bool> AnyAsync(string name, CancellationToken cancellationToken)
+        => await _context.Genres.AsNoTracking().AnyAsync(genre => genre.Name == name, cancellationToken: cancellationToken);
 
     public async Task SaveAsync(Genre genre, CancellationToken cancellationToken)
     {
