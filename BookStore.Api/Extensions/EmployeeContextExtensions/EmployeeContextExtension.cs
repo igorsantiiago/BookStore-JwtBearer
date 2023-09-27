@@ -1,5 +1,6 @@
 ﻿using BookStore.Core.Contexts.EmployeeContext.UseCases.Authenticate;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Api.Extensions.EmployeeContextExtensions;
 
@@ -48,8 +49,8 @@ public static class EmployeeContextExtension
     {
         #region Authenticate
         app.MapPost("api/v1/authenticate", async (
-            Request request,
-            IRequestHandler<
+            [FromBody] Request request,
+            [FromServices] IRequestHandler<
                 Request,
                 Response> handler) =>
         {
@@ -68,8 +69,8 @@ public static class EmployeeContextExtension
 
         #region Create
         app.MapPost("api/v1/employee/create", async (
-            Core.Contexts.EmployeeContext.UseCases.Create.Request request,
-            IRequestHandler<
+            [FromBody] Core.Contexts.EmployeeContext.UseCases.Create.Request request,
+            [FromServices] IRequestHandler<
                 Core.Contexts.EmployeeContext.UseCases.Create.Request,
                 Core.Contexts.EmployeeContext.UseCases.Create.Response> handler) =>
         {
@@ -82,8 +83,8 @@ public static class EmployeeContextExtension
 
         #region UpdateEmployeeData
         app.MapPut("api/v1/employee/update/data", async (
-            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request request,
-            IRequestHandler<
+            [FromBody] Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request request,
+            [FromServices] IRequestHandler<
                 Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Request,
                 Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeeData.Response> handler) =>
         {
@@ -96,8 +97,8 @@ public static class EmployeeContextExtension
 
         #region UpdateEmployeePassword
         app.MapPut("api/v1/employee/update/password", async (
-            Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request request,
-            IRequestHandler<
+            [FromBody] Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request request,
+            [FromServices] IRequestHandler<
                 Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Request,
                 Core.Contexts.EmployeeContext.UseCases.Update.UpdateEmployeePassword.Response> handler) =>
         {
@@ -110,8 +111,8 @@ public static class EmployeeContextExtension
 
         #region Delete
         app.MapDelete("api/v1/employee/delete", async (
-            Core.Contexts.EmployeeContext.UseCases.Delete.Request request,
-            IRequestHandler<
+            [FromBody] Core.Contexts.EmployeeContext.UseCases.Delete.Request request,
+            [FromServices] IRequestHandler<
                 Core.Contexts.EmployeeContext.UseCases.Delete.Request,
                 Core.Contexts.EmployeeContext.UseCases.Delete.Response> handler) =>
         {
