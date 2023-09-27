@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Api.Extensions.ProductContextExtensions;
 
@@ -17,10 +18,10 @@ public static class PublisherExtensions
     {
         #region Create
         app.MapPost("api/v1/products/publisher", async(
-            BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Request request,
-            IRequestHandler<
-            BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Request,
-            BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Response> handler) =>
+            [FromBody] BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Request request,
+            [FromServices] IRequestHandler<
+                BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Request,
+                BookStore.Core.Contexts.ProductContext.UseCases.Create.CreatePublisher.Response> handler) =>
         {
             var result = await handler.Handle(request, new CancellationToken());
             return result.IsSuccess

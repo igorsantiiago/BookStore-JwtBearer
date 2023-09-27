@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Api.Extensions.ProductContextExtensions;
 
@@ -17,8 +18,8 @@ public static class AuthorExtensions
     {
         #region Create
         app.MapPost("api/v1/products/author", async(
-            BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateAuthor.Request request,
-            IRequestHandler<
+            [FromBody] BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateAuthor.Request request,
+            [FromServices] IRequestHandler<
                 BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateAuthor.Request,
                 BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateAuthor.Response> handler) =>
         {
