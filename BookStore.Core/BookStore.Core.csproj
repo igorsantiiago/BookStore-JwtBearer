@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\ProductContext\UseCases\Delete\DeleteAuhor\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Delete\DeleteBook\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Delete\DeleteGenre\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Delete\DeletePublisher\" />
     <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateAuthor\" />
     <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateBook\" />
     <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateGenre\" />
