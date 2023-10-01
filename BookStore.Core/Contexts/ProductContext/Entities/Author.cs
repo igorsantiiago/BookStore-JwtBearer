@@ -16,6 +16,10 @@ public class Author : Entity
     public DateTime BirthDate { get; private set; }
     public List<Book> Books { get; private set; } = new();
 
-    public void ChangeName(Name name) => Name = name;
+    public void ChangeName(string firstName, string lastName)
+    {
+        Name.FirstName = firstName;
+        Name.LastName = lastName;
+    }
     public void ChangeBirthDate(DateTime birthDate) => BirthDate = birthDate;
 }
