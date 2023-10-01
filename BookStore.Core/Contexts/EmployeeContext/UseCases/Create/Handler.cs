@@ -31,10 +31,10 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Create Object
-
+        Employee employee;
         try
         {
-            var employee = CreateEmployee(request.FirstName, request.LastName, request.Email, request.Password);           
+            employee = CreateEmployee(request.FirstName, request.LastName, request.Email, request.Password);           
         }
         catch (Exception ex)
         {
