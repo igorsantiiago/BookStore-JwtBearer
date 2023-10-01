@@ -31,17 +31,10 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Create Object
-        Name name;
-        Email email;
-        Password password;
-        Employee employee;
 
         try
         {
-            name = new(request.FirstName, request.LastName);
-            email = new(request.Email);
-            password = new(request.Password);
-            employee = new(name, email, password);            
+            var employee = CreateEmployee(request.FirstName, request.LastName, request.Email, request.Password);           
         }
         catch (Exception ex)
         {
@@ -76,5 +69,16 @@ public class Handler : IRequestHandler<Request, Response>
         #region Response
         return new Response("Employee created successfully", new ResponseData(employee.Id, employee.Name.FirstName, employee.Email));
         #endregion
+    }
+
+    public static Employee CreateEmployee(string firstName, string lastName, string email, string password)
+    {
+        Name employeeName = new(firstName, lastName);
+        Email employeeEmail = new(email);
+        Password employeePassword = new(password);
+
+        var employee = new Employee(employeeName, employeeEmail, employeePassword);
+
+        return employee;
     }
 }

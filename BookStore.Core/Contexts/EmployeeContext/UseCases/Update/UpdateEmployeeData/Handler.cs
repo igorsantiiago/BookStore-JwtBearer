@@ -50,10 +50,9 @@ public class Handler : IRequestHandler<Request, Response>
         #region Update Employee
         try
         {
-            employee.Name.FirstName = request.FirstName;
-            employee.Name.LastName = request.LastName;
+            UpdateEmployeeName(employee, request.FirstName, request.LastName);
             if (request.NewEmail != null)
-                employee.UpdateEmail(request.NewEmail);
+                UpdateEmployeeEmail(employee, request.NewEmail);
         }
         catch (Exception ex)
         {
@@ -73,6 +72,15 @@ public class Handler : IRequestHandler<Request, Response>
         }
         #endregion
 
-        return new Response("Employee created successfully", new ResponseData(employee.Id, employee.Name.FirstName, employee.Email));
+        #region Response
+        return new Response("Employee created successfully", 
+            new ResponseData(employee.Id, employee.Name.FirstName, employee.Email));
+        #endregion
     }
+
+    public void UpdateEmployeeName(Employee employee, string firstName, string lastName)
+        => employee.UpdateName(firstName, lastName);
+
+    public void UpdateEmployeeEmail(Employee employee, string email)
+        => employee.UpdateEmail(email);
 }

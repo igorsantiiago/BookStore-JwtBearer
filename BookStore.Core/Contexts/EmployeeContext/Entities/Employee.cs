@@ -27,7 +27,7 @@ public class Employee : Entity
     public Password Password { get; private set; } = null!;
     public List<Role> Roles { get; set; } = new();
 
-    public void ChangeName(string firstName,  string lastName)
+    public void UpdateName(string firstName,  string lastName)
     {
         Name.FirstName = firstName;
         Name.LastName = lastName;
