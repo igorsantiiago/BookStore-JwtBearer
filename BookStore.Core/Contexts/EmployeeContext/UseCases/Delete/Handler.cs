@@ -29,7 +29,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Employee
-        Employee employee;
+        Employee? employee;
 
         try
         {
@@ -46,7 +46,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Delete Employee
         try
         {
-            await _repository.RemoveEmployeeAsync(employee, cancellationToken);
+            _repository.RemoveEmployee(employee, cancellationToken);
         }
         catch (Exception ex)
         {

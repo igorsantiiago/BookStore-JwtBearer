@@ -27,7 +27,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Genre
-        Genre genre;
+        Genre? genre;
         try
         {
             genre = await _repository.GetGenreAsync(request.Id, cancellationToken);
@@ -43,7 +43,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Delete Genre
         try
         {
-            await _repository.RemoveGenreAsync(genre, cancellationToken);
+            _repository.RemoveGenre(genre, cancellationToken);
         }
         catch (Exception ex)
         {

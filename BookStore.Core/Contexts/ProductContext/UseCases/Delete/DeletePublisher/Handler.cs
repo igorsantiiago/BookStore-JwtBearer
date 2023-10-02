@@ -27,7 +27,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Publisher
-        Publisher publisher;
+        Publisher? publisher;
         try
         {
             publisher = await _repository.GetPublisherAsync(request.Id, cancellationToken);
@@ -43,7 +43,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Remove Publisher
         try
         {
-            await _repository.RemovePublisherAsync(publisher, cancellationToken);
+            _repository.RemovePublisher(publisher, cancellationToken);
         }
         catch (Exception ex)
         {

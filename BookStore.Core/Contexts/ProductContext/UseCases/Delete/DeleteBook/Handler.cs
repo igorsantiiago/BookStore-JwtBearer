@@ -27,10 +27,10 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Book
-        Book book;
+        Book? book;
         try
         {
-            book = await _repository.GetBookAsync(request.Id, cancellationToken);
+            book = await _repository.GetBookByIdAsync(request.Id, cancellationToken);
             if (book is null)
                 return new Response("Book Not Found", 404);
         }
@@ -43,7 +43,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Delete Book
         try
         {
-            await _repository.RemoveBookAsync(book, cancellationToken);
+            _repository.RemoveBook(book, cancellationToken);
         }
         catch (Exception ex)
         {

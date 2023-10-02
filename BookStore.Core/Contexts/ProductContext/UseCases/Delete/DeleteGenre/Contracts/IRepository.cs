@@ -4,7 +4,7 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Delete.DeleteGenre.Con
 
 public interface IRepository
 {
-    Task<Genre> GetGenreAsync(Guid id, CancellationToken cancellationToken);
-    Task RemoveGenreAsync(Genre genre, CancellationToken cancellationToken);
+    Task<Genre?> GetGenreAsync(Guid id, CancellationToken cancellationToken);
+    void RemoveGenre(Genre genre, CancellationToken cancellationToken);
     Task SaveAsync(CancellationToken cancellationToken);
 }

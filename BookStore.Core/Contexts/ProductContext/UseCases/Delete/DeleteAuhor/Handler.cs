@@ -27,7 +27,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Author
-        Author author;
+        Author? author;
         try
         {
             author = await _repository.GetAuthorAsync(request.Id, cancellationToken);
@@ -43,7 +43,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Delete Author
         try
         {
-            await _repository.RemoveAuthorAsync(author, cancellationToken);
+            _repository.RemoveAuthor(author, cancellationToken);
         }
         catch (Exception ex)
         {

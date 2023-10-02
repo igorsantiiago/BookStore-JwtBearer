@@ -4,7 +4,7 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Delete.DeletePublisher
 
 public interface IRepository
 {
-    Task<Publisher> GetPublisherAsync(Guid id, CancellationToken cancellationToken);
-    Task RemovePublisherAsync(Publisher publisher, CancellationToken cancellationToken);
+    Task<Publisher?> GetPublisherAsync(Guid id, CancellationToken cancellationToken);
+    void RemovePublisher(Publisher publisher, CancellationToken cancellationToken);
     Task SaveAsync(CancellationToken cancellationToken);
 }
