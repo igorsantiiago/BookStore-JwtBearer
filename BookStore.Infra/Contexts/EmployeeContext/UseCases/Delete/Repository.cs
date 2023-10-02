@@ -13,17 +13,11 @@ public class Repository : IRepository
         _context = context;
     }
 
-    public async Task<Employee> GetEmployeeAsync(Guid id, CancellationToken cancellationToken)
-    {
-        var employee = await _context.Employees.FirstOrDefaultAsync(employee => employee.Id == id, cancellationToken: cancellationToken);
-        return employee!;
-    }
+    public async Task<Employee?> GetEmployeeAsync(Guid id, CancellationToken cancellationToken)
+        => await _context.Employees.FirstOrDefaultAsync(employee => employee.Id == id, cancellationToken: cancellationToken);
 
-    public async Task RemoveEmployeeAsync(Employee employee, CancellationToken cancellationToken)
-    {
-        var user = await _context.Employees.FirstOrDefaultAsync(e => e.Id == employee.Id);
-        _context.Employees.Remove(user!);
-    }
+    public void RemoveEmployee(Employee employee, CancellationToken cancellationToken)
+        => _context.Employees.Remove(employee);
 
     public async Task SaveAsync(CancellationToken cancellationToken)
         => await _context.SaveChangesAsync(cancellationToken);
