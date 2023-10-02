@@ -11,11 +11,4 @@
     <PackageReference Include="MediatR" Version="12.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateAuthor\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateBook\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Update\UpdateGenre\" />
-    <Folder Include="Contexts\ProductContext\UseCases\Update\UpdatePublisher\" />
-  </ItemGroup>
-
 </Project>

@@ -13,5 +13,5 @@ public class Publisher : Entity
     public string Name { get; private set; } = string.Empty;
     public List<Book> Books { get; private set; } = new();
 
-    public void ChangeName(string name) => Name = name;
+    public void UpdateName(string name) => Name = name;
 }

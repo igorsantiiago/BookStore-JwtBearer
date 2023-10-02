@@ -1,3 +1,5 @@
-﻿namespace BookStore.Core.Contexts.ProductContext.UseCases.Update.UpdatePublisher;
+﻿using MediatR;
 
-public record Request();
+namespace BookStore.Core.Contexts.ProductContext.UseCases.Update.UpdatePublisher;
+
+public record Request(Guid Id, string Name) : IRequest<Response>;

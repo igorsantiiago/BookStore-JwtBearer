@@ -1,5 +1,5 @@
-﻿namespace BookStore.Core.Contexts.ProductContext.UseCases.Update.UpdateGenre;
+﻿using MediatR;
 
-public class Request
-{
-}
+namespace BookStore.Core.Contexts.ProductContext.UseCases.Update.UpdateGenre;
+
+public record Request(Guid Id, string Name) : IRequest<Response>;

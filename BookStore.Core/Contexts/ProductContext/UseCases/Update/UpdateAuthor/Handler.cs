@@ -15,9 +15,9 @@ public class Handler : IRequestHandler<Request, Response>
         #region Validate Request
         try
         {
-            var result = Specification.Validate(request);
-            if (!result.IsValid)
-                return new Response("Invalid Request", 400, result.Notifications);
+            var response = Specification.Validate(request);
+            if (!response.IsValid)
+                return new Response("Invalid Request", 400, response.Notifications);
         }
         catch
         {
@@ -67,9 +67,9 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
     }
 
-    public void UpdateAuthorName(Author author, string firstName, string lastName)
+    private static void UpdateAuthorName(Author author, string firstName, string lastName)
         => author.ChangeName(firstName, lastName);
 
-    public void UpdateAuthorBirthDate(Author author, DateTime birthDate) 
+    private static void UpdateAuthorBirthDate(Author author, DateTime birthDate)
         => author.ChangeBirthDate(birthDate);
 }

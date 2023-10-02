@@ -78,9 +78,9 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
     }
 
-    public void UpdateEmployeeName(Employee employee, string firstName, string lastName)
+    private static void UpdateEmployeeName(Employee employee, string firstName, string lastName)
         => employee.UpdateName(firstName, lastName);
 
-    public void UpdateEmployeeEmail(Employee employee, string email)
+    private static void UpdateEmployeeEmail(Employee employee, string email)
         => employee.UpdateEmail(email);
 }

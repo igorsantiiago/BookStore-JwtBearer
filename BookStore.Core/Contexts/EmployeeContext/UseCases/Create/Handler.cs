@@ -71,7 +71,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
     }
 
-    public static Employee CreateEmployee(string firstName, string lastName, string email, string password)
+    private static Employee CreateEmployee(string firstName, string lastName, string email, string password)
     {
         Name employeeName = new(firstName, lastName);
         Email employeeEmail = new(email);
