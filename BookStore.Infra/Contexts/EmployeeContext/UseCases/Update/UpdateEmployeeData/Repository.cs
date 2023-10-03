@@ -18,7 +18,7 @@ public class Repository : IRepository
 
     public async Task SaveAsync(Employee employee, CancellationToken cancellationToken)
     {
-        await _context.Employees.AddAsync(employee, cancellationToken);
+        _context.Employees.Update(employee);
         await _context.SaveChangesAsync(cancellationToken);
     }
 }
