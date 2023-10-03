@@ -26,7 +26,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Publisher
-        Publisher publisher;
+        Publisher? publisher;
 
         try
         {

@@ -4,6 +4,6 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Update.UpdatePublisher
 
 public interface IRepository
 {
-    Task<Publisher> GetPublisherByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Publisher?> GetPublisherByIdAsync(Guid id, CancellationToken cancellationToken);
     Task SaveAsync(Publisher publisher, CancellationToken cancellationToken);
 }

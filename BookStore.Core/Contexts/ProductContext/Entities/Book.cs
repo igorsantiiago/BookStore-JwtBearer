@@ -21,10 +21,10 @@ public class Book : Entity
     public Publisher Publisher { get; private set; } = null!;
     public List<Genre> Genres { get; private set; } = new();
 
-    public void ChangeTitle(string title) => Title = title;
-    public void ChangeLaunch(DateTime launchDate) => LaunchDate = launchDate;
-    public void ChangeDescription(string description) => Description = description;
-    public void ChangePrice(decimal price) => Price = price;
+    public void UpdateTitle(string title) => Title = title;
+    public void UpdateLaunchDate(DateTime launchDate) => LaunchDate = launchDate;
+    public void UpdateDescription(string description) => Description = description;
+    public void UpdatePrice(decimal price) => Price = price;
 
     public void AddAuthor(Author author) => Authors.Add(author);
     public void AddGenre(Genre genre) => Genres.Add(genre);

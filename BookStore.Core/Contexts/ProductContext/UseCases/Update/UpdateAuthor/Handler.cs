@@ -26,7 +26,7 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
 
         #region Get Author
-        Author author;
+        Author? author;
         try
         {
             author = await _repository.GetAuthorByIdAsync(request.Id, cancellationToken);
