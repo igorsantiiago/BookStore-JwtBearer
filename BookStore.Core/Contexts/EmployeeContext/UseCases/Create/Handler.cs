@@ -34,7 +34,7 @@ public class Handler : IRequestHandler<Request, Response>
         Employee employee;
         try
         {
-            employee = CreateEmployee(request.FirstName, request.LastName, request.Email, request.Password);           
+            employee = CreateEmployee(request.FirstName, request.LastName, request.Email, request.Password, request.BirthDate);           
         }
         catch (Exception ex)
         {
@@ -71,13 +71,13 @@ public class Handler : IRequestHandler<Request, Response>
         #endregion
     }
 
-    private static Employee CreateEmployee(string firstName, string lastName, string email, string password)
+    private static Employee CreateEmployee(string firstName, string lastName, string email, string password, DateTime birthDate)
     {
         Name employeeName = new(firstName, lastName);
         Email employeeEmail = new(email);
         Password employeePassword = new(password);
 
-        var employee = new Employee(employeeName, employeeEmail, employeePassword);
+        var employee = new Employee(employeeName, birthDate, employeeEmail, employeePassword);
 
         return employee;
     }

@@ -7,16 +7,18 @@ namespace BookStore.Core.Contexts.EmployeeContext.Entities;
 public class Employee : Entity
 {
     protected Employee() { }
-    public Employee(Name name, Email email, Password password)
+    public Employee(Name name, DateTime birthDate, Email email, Password password)
     {
         Name = name;
+        BirthDate = birthDate;
         Email = email;
         Password = password;
     }
 
-    public Employee(Name name, string email, string? password = null)
+    public Employee(Name name, DateTime birthDate, string email, string? password = null)
     {
         Name = name;
+        BirthDate = birthDate;
         Email = email;
         Password = new Password(password);
     }

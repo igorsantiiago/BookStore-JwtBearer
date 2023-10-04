@@ -16,9 +16,9 @@ public class Handler : IRequestHandler<Request, Response>
         #region Validate Request
         try
         {
-            var result = Specification.Validate(request);
-            if (!result.IsValid)
-                return new Response("Invalid Request", 400);
+            var response = Specification.Validate(request);
+            if (!response.IsValid)
+                return new Response("Invalid Request", 400, response.Notifications);
         }
         catch
         {

@@ -3,4 +3,4 @@ using MediatR;
 
 namespace BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateBook;
 
-public record Request(string Title, DateTime LaunchDate, string Description, decimal Price, Author Author, Publisher Publisher, Genre Genre) : IRequest<Response>;
+public record Request(string Title, DateTime LaunchDate, string Description, decimal Price, Guid IdAuthor, Guid IdPublisher, Guid IdGenre) : IRequest<Response>;

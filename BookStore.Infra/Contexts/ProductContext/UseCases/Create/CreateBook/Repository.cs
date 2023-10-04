@@ -1,6 +1,5 @@
 ﻿using BookStore.Core.Contexts.ProductContext.Entities;
 using BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateBook.Contracts;
-using BookStore.Core.Contexts.SharedContext.ValueObjects;
 using BookStore.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,9 +13,9 @@ public class Repository : IRepository
         _context = context;
     }
 
-    public async Task<bool> AnyAsync(string title, Author author, CancellationToken cancellationToken)
+    public async Task<bool> AnyAsync(string title, Guid IdAuthor, CancellationToken cancellationToken)
         => await _context.Books.AsNoTracking()
-        .AnyAsync(book => book.Title == title && book.Authors.Equals(author), cancellationToken);
+            .AnyAsync(book => book.Title == title && book.Authors.Any(author => author.Id == IdAuthor), cancellationToken);
 
     public async Task<Author?> GetAuthor(Guid id, CancellationToken cancellationToken)
         => await _context.Authors.FirstOrDefaultAsync(author => author.Id == id, cancellationToken);

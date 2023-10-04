@@ -7,7 +7,6 @@ public static class Specification
 {
     public static Contract<Notification> Validate(Request request) => new Contract<Notification>()
         .Requires()
-        .IsNullOrEmpty(request.Id.ToString(), "Id", "Invalid ID")
         .IsLowerOrEqualsThan(request.Title.Length, 80, "Title", "The title of the book needs to be maximum 80 characters")
         .IsGreaterOrEqualsThan(request.Title.Length, 3, "Title", "The title of the book needs to be minimum 3 characters")
         .IsLowerOrEqualsThan(request.Description.Length, 500, "Description", "The description of the book needs to be maximum 500 characters")

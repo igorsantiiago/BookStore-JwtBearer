@@ -42,7 +42,7 @@ public class Handler : IRequestHandler<Request, Response>
         #region Verify Existence
         try
         {
-            var exists = await _repository.AnyAsync(request.Title, request.Author, cancellationToken);
+            var exists = await _repository.AnyAsync(request.Title, request.IdAuthor, cancellationToken);
             if (exists)
                 return new Response("Book already exists", 400);
         }
@@ -59,16 +59,16 @@ public class Handler : IRequestHandler<Request, Response>
 
         try
         {
-            author = await _repository.GetAuthor(request.Author.Id, cancellationToken);
-            if (author == null)
+            author = await _repository.GetAuthor(request.IdAuthor, cancellationToken);
+            if (author is null)
                 return new Response("Author not found", 404);
 
-            publisher = await _repository.GetPublisher(request.Publisher.Id, cancellationToken);
-            if (publisher == null)
+            publisher = await _repository.GetPublisher(request.IdPublisher, cancellationToken);
+            if (publisher is null)
                 return new Response("Publisher not found", 404);
 
-            genre = await _repository.GetGenre(request.Genre.Id, cancellationToken);
-            if (genre == null)
+            genre = await _repository.GetGenre(request.IdGenre, cancellationToken);
+            if (genre is null)
                 return new Response("Genre not found", 404);
 
             book.AddAuthor(author);

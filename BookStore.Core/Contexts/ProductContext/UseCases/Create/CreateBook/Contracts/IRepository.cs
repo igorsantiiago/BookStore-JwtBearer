@@ -5,7 +5,7 @@ namespace BookStore.Core.Contexts.ProductContext.UseCases.Create.CreateBook.Cont
 
 public interface IRepository
 {
-    Task<bool> AnyAsync(string title, Author author, CancellationToken cancellationToken);
+    Task<bool> AnyAsync(string title, Guid IdAuthor, CancellationToken cancellationToken);
     Task<Author?> GetAuthor(Guid id, CancellationToken cancellationToken);
     Task<Genre?> GetGenre(Guid id, CancellationToken cancellationToken);
     Task<Publisher?> GetPublisher(Guid id, CancellationToken cancellationToken);
