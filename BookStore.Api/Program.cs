@@ -8,6 +8,7 @@ builder.AddDatabase();
 builder.AddJwtAuthentication();
 
 builder.AddEmployeeContext();
+builder.AddRoleContext();
 builder.AddAuthorContext();
 builder.AddGenreContext();
 builder.AddPublisherContext();
@@ -23,6 +24,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapEmployeeEndpoints();
+app.MapRoleEndpoints();
 app.MapAuthorEndpoints();
 app.MapGenreEndpoints();
 app.MapPublisherEndpoints();

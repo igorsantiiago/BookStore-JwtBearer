@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Api.Extensions.EmployeeContextExtensions;
 
-public static class EmployeeContextExtension
+public static class EmployeeExtension
 {
     public static void AddEmployeeContext(this WebApplicationBuilder builder)
     {
