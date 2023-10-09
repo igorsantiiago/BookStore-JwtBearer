@@ -13,6 +13,6 @@ public static class Specification
         .IsGreaterOrEqualsThan(request.LastName.Length, 3, "LastName", "The minimum length of last name is 3 characters.")
         .IsNotNullOrEmpty(request.BirthDate.ToString(), "BirthDate", "Birth date field is required.")
         .IsEmail(request.Email, "Email", "Invalid Email")
-        .IsLowerOrEqualsThan(request.Password.Length, 128, "Password", "The maximum legnth of password is 128 characters.")
-        .IsGreaterOrEqualsThan(request.Password.Length, 12, "Password", "The minimum length of password is 12 characters.");
+        .IsLowerOrEqualsThan(request.Password!.Length, 128, "Password", "The maximum legnth of password is 128 characters.")
+        .IsGreaterOrEqualsThan(request.Password!.Length, 12, "Password", "The minimum length of password is 12 characters.");
 }
