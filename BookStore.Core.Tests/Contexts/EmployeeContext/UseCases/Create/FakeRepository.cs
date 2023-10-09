@@ -1,7 +1,7 @@
 ﻿using BookStore.Core.Contexts.EmployeeContext.Entities;
 using BookStore.Core.Contexts.EmployeeContext.UseCases.Create.Contracts;
 
-namespace BookStore.Core.Tests.Contexts.EmployeeContext.UseCases.Create.Repositories;
+namespace BookStore.Core.Tests.Contexts.EmployeeContext.UseCases.Create;
 
 public class FakeRepository : IRepository
 {
