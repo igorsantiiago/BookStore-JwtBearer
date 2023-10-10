@@ -61,7 +61,7 @@ public class Password : ValueObject
 
         var hashIterations = Convert.ToInt32(parts[0]);
         var salt = Convert.FromBase64String(parts[1]);
-        var key = Convert.FromBase64String(parts[3]);
+        var key = Convert.FromBase64String(parts[2]);
 
         if (hashIterations != iterations)
             return false;
